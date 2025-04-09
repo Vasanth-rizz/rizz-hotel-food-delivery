@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Hotel - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+    .hero {
+        background: url('https://plus.unsplash.com/premium_photo-1673108852141-e8c3c22a4a22?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+        margin-top: 70px;
+    }
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: -1.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--bs-heading-color);
+    }
+    /* Sidebar styles */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: #343a40;
+        transition: right 0.3s ease;
+        z-index: 1050;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    }
+    
+    .sidebar.show {
+        right: 0;
+    }
+    
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Adjust darkness */
+    }
+    
+    .hero .container {
+        position: relative;
+        z-index: 1;
+    }
+    .order-btn {
+        transition: background-color 0.3s ease-in-out, transform 0.2s;
+    }
+    
+    .order-btn:active {
+        background-color: rgb(50, 9, 235) !important; /* Change color when clicked */
+        transform: scale(1.1); /* Slightly enlarge button */
+    }
+    
+    
+    
+    
+    
+    
+    .navbar-nav .nav-item {
+        position: relative;
+    }
+    
+    .navbar-nav .nav-link {
+        position: relative;
+        color: white;
+        text-decoration: none;
+        padding-bottom: 5px;
+    }
+    
+    .navbar-nav .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: orange; /* Change color if needed */
+        transition: all 0.3s ease-in-out;
+        transform: translateX(-50%);
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+        width: 100%;
+    }
+    @media (max-width: 991.98px) {
+        .navbar-nav {
+            text-align: center;
+        }
+    
+        .navbar-nav .nav-item {
+            margin: 10px 0;
+        }
+    }
+    
+    .footer-custom {
+        background: linear-gradient(to right, #ff7e5f, #feb47b); /* Updated gradient */
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .footer-custom h5 {
+        font-family: Cursive;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-custom a {
+        color: white;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+    }
+    
+    .footer-custom a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background-color: #fff;
+        transition: width 0.3s ease-in-out;
+    }
+    
+    .footer-custom a:hover {
+        color: #ffd700; /* gold hover color */
+    }
+    
+    .footer-custom a:hover::after {
+        width: 100%;
+    }
+    .footer-custom .social-icons a {
+        color: white;
+        transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    .footer-custom .social-icons a:hover {
+        color: #ffd700; /* Gold hover color */
+        transform: scale(1.2); /* Slight zoom on hover */
+    }
+    
+    #scrollTopBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+        background: transparent;
+        border: none;
+        font-size: 40px;
+        color: rgb(17, 17, 17);
+        cursor: pointer;
+        display: none;
+        transition: transform 0.3s ease;
+    }
+    #scrollTopBtn:hover {
+        transform: scale(1.2);
+        color: gold;
+    }
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
+            <div class="container">
+                <a class="navbar-brand fade-in" href="#">
+                    <h1 style="
+                        font-family: Serif; 
+                        background: linear-gradient(to right, orange, tomato, gold); 
+                        -webkit-background-clip: text; 
+                        -webkit-text-fill-color: transparent;
+                        margin: 0;
+                    ">
+                        Rizz Delicious Food
+                    </h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav fade-in fs-5">
+                        <li class="nav-item mx-2"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="cart.html">Cart</a></li>
+                        <li class="nav-item mx-2"><a class="nav-link" href="orders.html">Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <section class="hero d-flex align-items-center justify-content-center text-center fade-in">
+        <div class="container">
+            <h1 class="display-4 mb-4 fade-in" style="font-family: Cursive; font-size:55px;">Delicious Food Delivered to Your Doorstep</h1>
+            <p class="lead fade-in" style="font-family: Cursive;">Pickup & Door Delivery Available</p>
+        </div>
+    </section>
+    
+    <section class="about py-5 fade-in">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 ">
+                    <h2 style="font-family: Cursive; font-size:50px;" class="mb-3">About Food Hotel</h2>
+                    <p>Welcome to Food Hotel, where we serve delicious and freshly prepared meals. Whether you prefer dining in, picking up your order, or enjoying a home delivery, we have you covered. Our menu features a variety of cuisines to satisfy your cravings!</p>
+                    <a href="menu.html" class="btn btn-primary order-btn" draggable="true">Order Now</a>
+
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="https://www.kindpng.com/picc/m/315-3150431_transparent-food-delivery-clipart-hd-png-download.png" class="img-fluid rounded" alt="Food Hotel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-custom text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <!-- About -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Food Hotel</h5>
+                    <p>Serving hot and delicious meals to your doorstep. Pickup and home delivery available.</p>
+                </div>
+    
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                        <li><a href="orders.html">Orders</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact & Social -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Contact</h5>
+                    <p>Email: Rizz@foodhotel.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <div class="social-icons mt-3">
+                        <a href="index.html" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="index.html" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="index.html" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <hr class="border-light">
+            <p class="text-center mb-0">&copy; 2025 - Rizz Food Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    
+    <!-- Scroll to Top Button -->
+<button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">
+    <i class="bi bi-arrow-up-circle-fill"></i>
+</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show button when user scrolls down
+        window.onscroll = function() {
+            const btn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+           // Function to check if element is in viewport
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+    }
+
+    // Fade in elements on scroll
+    function fadeInOnScroll() {
+        const faders = document.querySelectorAll('.fade-in');
+        faders.forEach(el => {
+            if (isInViewport(el)) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('load', fadeInOnScroll);
+    </script>
+    
+</body>
+</html>
